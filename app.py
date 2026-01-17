@@ -23,25 +23,42 @@ st.set_page_config(page_title="PICHU GO CALCULATOR", page_icon="🇰🇷")
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    /* EXISTING KOREA STYLE (Rename strictly to result-card-kr if you want, or keep generic) */
-    .result-card {
-        background-color: #fce7f3; /* Pink background */
-        padding: 20px;
-        border-radius: 10px;
-        border-left: 5px solid #d53f8c; /* Pink border */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+    html, body, [class*="css"]  {
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Clean up the top spacing */
+    .block-container {
+        padding-top: 2rem;
     }
 
-    /* NEW CHINA STYLE */
-    .result-card-cn {
-        background-color: #fff5f5; /* Light Red background */
-        padding: 20px;
-        border-radius: 10px;
-        border-left: 5px solid #e53e3e; /* Red border */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* EXISTING KOREA STYLE (Rename strictly to result-card-kr if you want, or keep generic) */
+    .result-card {
+        background-color: #ffffff;
+        padding: 24px;
+        border-radius: 16px;
+        border: 2px solid #fce7f3; /* Very subtle border */
+        border-left: 8px solid #d53f8c; /* Strong indicator */
+        box-shadow: 0 10px 25px -5px rgba(213, 63, 140, 0.15); /* Pink glow */
         margin-top: 20px;
-        color: #742a2a; /* Dark Red text */
+        transition: transform 0.2s;
+    }
+    .result-card:hover {
+        transform: translateY(-2px); /* Micro-interaction */
+    }
+
+    /* CHINA CARD: White bg, Red Border, Soft Red Shadow */
+    .result-card-cn {
+        background-color: #ffffff;
+        padding: 24px;
+        border-radius: 16px;
+        border: 2px solid #fff5f5;
+        border-left: 8px solid #e53e3e;
+        box-shadow: 0 10px 25px -5px rgba(229, 62, 62, 0.15); /* Red glow */
+        margin-top: 20px;
+        color: #742a2a;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -104,7 +121,18 @@ with tab_kr:
     jasa_tf_kr = config.get('jasa_tf_kr', 6000)
     ongkir_kr_default = config.get('ongkir_kr_default', 2000)
 
-    st.info(f"💱 Exchange Rate: 1 KRW = {rate_kr} IDR")
+    st.markdown(f"""
+    <div style="background-color: rgba(255, 255, 255, 0.5); 
+                padding: 10px 15px; 
+                border-radius: 10px; 
+                border: 1px solid #d53f8c; 
+                color: #d53f8c; 
+                font-weight: 600; 
+                text-align: center; 
+                margin-bottom: 15px;">
+        💱 Exchange Rate: 1 KRW = {rate_kr} IDR
+    </div>
+    """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
     with col1:
@@ -149,9 +177,22 @@ with tab_kr:
     kr_total_rounded = round(kr_total, -2)
 
     st.markdown(f"""
-    <div class="result-card">
-        <h2>Rp {kr_total_rounded:,.0f}</h2>
-        <p>Harga Bersih per Item</p>
+    <div style="
+        background: linear-gradient(135deg, #FFF5F7 0%, #FED7E2 100%);
+        border-radius: 16px;
+        padding: 20px;
+        border: 1px solid #FBB6CE;
+        box-shadow: 0 4px 15px rgba(213, 63, 140, 0.15);
+        margin-top: 20px;
+        text-align: center;
+    ">
+        <p style="color: #97266D; font-size: 0.9rem; font-weight: 600; margin: 0; text-transform: uppercase; letter-spacing: 1px;">🇰🇷 Estimated Total</p>
+        <h1 style="color: #702459; font-size: 2.5rem; font-weight: 700; margin: 5px 0;">Rp {kr_total_rounded:,.0f}</h1>
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 0.85rem; color: #555;">
+            <span>📦 Price: {kr_item_idr:,.0f}</span>
+            <span>•</span>
+            <span>✈️ Fees: {kr_shared_fees + admin_go:,.0f}</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -162,7 +203,18 @@ with tab_ch:
     jasa_tf_ch = config.get('jasa_tf_ch', 10000)
     ongkir_ch_default = config.get('ongkir_ch_default', 100)
 
-    st.info(f"💱 Exchange Rate: 1 CNY = {rate_ch} IDR")
+    st.markdown(f"""
+    <div style="background-color: rgba(255, 255, 255, 0.5); 
+                padding: 10px 15px; 
+                border-radius: 10px; 
+                border: 1px solid #c53030; 
+                color: #c53030; 
+                font-weight: 600; 
+                text-align: center; 
+                margin-bottom: 15px;">
+        💱 Exchange Rate: 1 CNY = {rate_ch} IDR
+    </div>
+    """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
     with col1:
