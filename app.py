@@ -77,7 +77,7 @@ with col2:
     pembeli = st.slider(
         "👥 Jumlah Sharing (Orang)", 
         min_value=1,
-        max_value=50,
+        max_value=20,
         value=1, 
         step=1,
         help="Jumlah orang dalam Group Order"
