@@ -10,8 +10,8 @@ except Exception:
 # Defaults (Used if sheet is unreachable or internet is down)
 DEFAULT_CONFIG = {
     'rate': 15,        # 1 KRW = 15 IDR
-    'admin_go': 5000,  # Fee Tetap per Barang
-    'jasa_tf': 10000,  # Fee Transfer (Shared)
+    'admin_go': 6000,  # Fee Tetap per Barang
+    'jasa_tf': 6000,  # Fee Transfer (Shared)
     'ongkir_kr': 2000  # Default Shipping KRW (Standard)
 }
 
