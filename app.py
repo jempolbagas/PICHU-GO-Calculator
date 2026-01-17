@@ -10,8 +10,8 @@ except Exception:
 # Defaults (Used if sheet is unreachable or internet is down)
 DEFAULT_CONFIG = {
     'rate': 15,        # 1 KRW = 15 IDR
-    'admin_go': 5000,  # Fee Tetap per Barang
-    'jasa_tf': 10000,  # Fee Transfer (Shared)
+    'admin_go': 6000,  # Fee Tetap per Barang
+    'jasa_tf': 6000,  # Fee Transfer (Shared)
     'ongkir_kr': 2000  # Default Shipping KRW (Standard)
 }
 
@@ -28,15 +28,24 @@ def get_config():
     
     try:
         df = pd.read_csv(csv_url, header=None, names=['key', 'value'])
-        config = pd.Series(df.value.values, index=df.key).to_dict()
+        fetched_config = pd.Series(df.value.values, index=df.key).to_dict()
         
+        # Start with defaults to ensure all keys exist
+        config = DEFAULT_CONFIG.copy()
+
+        # Update with fetched values, validating types
         for key in config:
-            try:
-                config[key] = float(config[key])
-            except:
-                pass 
+            if key in fetched_config:
+                try:
+                    config[key] = float(fetched_config[key])
+                except (ValueError, TypeError):
+                    print(f"⚠️ Invalid value for '{key}': {fetched_config[key]}. Using default.")
+            else:
+                print(f"⚠️ Key '{key}' missing in Google Sheet. Using default.")
+
         return config, "✅ Live from Google Sheet"
-    except:
+    except Exception as e:
+        print(f"Error fetching Google Sheet: {e}")
         return DEFAULT_CONFIG, "⚠️ Connection Failed (Using Defaults)"
 
 # --- APP START ---
