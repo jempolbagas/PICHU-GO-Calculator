@@ -23,32 +23,25 @@ st.set_page_config(page_title="PICHU GO CALCULATOR", page_icon="🇰🇷")
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+    /* EXISTING KOREA STYLE (Rename strictly to result-card-kr if you want, or keep generic) */
+    .result-card {
+        background-color: #fce7f3; /* Pink background */
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid #d53f8c; /* Pink border */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
     }
 
-    /* Result Card Styling */
-    .result-card {
-        background-color: white;
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(213, 63, 140, 0.15); /* Soft pink shadow */
-        border: 2px solid #D53F8C; /* Deep Pink Border */
+    /* NEW CHINA STYLE */
+    .result-card-cn {
+        background-color: #fff5f5; /* Light Red background */
         padding: 20px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .result-card h2 {
-        color: #D53F8C; /* Deep Pink Text */
-        margin: 0;
-        font-weight: 800;
-        font-size: 2.5rem;
-    }
-    .result-card p {
-        margin: 0;
-        font-size: 1rem;
-        color: #718096; /* Soft Grey for subtitle */
-        font-weight: 500;
+        border-radius: 10px;
+        border-left: 5px solid #e53e3e; /* Red border */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        color: #742a2a; /* Dark Red text */
     }
     </style>
 """, unsafe_allow_html=True)
@@ -214,8 +207,12 @@ with tab_ch:
     cn_total_rounded = round(cn_total, -2)
 
     st.markdown(f"""
-    <div class="result-card">
-        <h2>Rp {cn_total_rounded:,.0f}</h2>
-        <p>Harga Bersih per Item</p>
+    <div class="result-card-cn">  <h3 style="margin:0; color: #c53030;">🇨🇳 Total Estimation</h3>
+    <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">
+        Rp {cn_total_rounded:,.0f}
+    </p>
+    <p style="margin:0; font-size: 14px; opacity: 0.8;">
+        Rate: {rate_ch} | Ongkir: {cn_ongkir_input} Yuan
+    </p>
     </div>
     """, unsafe_allow_html=True)
