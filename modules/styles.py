@@ -136,20 +136,56 @@ GLOBAL_CSS = """
     }
 
     /* 5. GLASSY INPUTS */
+
+    div[data-baseweb="base-input"] {
+        background-color: transparent !important;
+        border: none !important;
+    }
+
     div[data-baseweb="input"] {
         background-color: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.8) !important;
         border-radius: 12px !important;
+        /* Optional: ensures content doesn't bleed out of rounded corners */
+        overflow: hidden;
     }
 
     div[data-baseweb="input"] input {
         color: #2D3748 !important;
         font-weight: 600 !important;
+        /* Ensure the text input element itself is transparent so the glass shows */
+        background-color: transparent !important;
     }
 
-    /* 6. EXCHANGE RATE PILL */
+    /* 6. BEAUTIFY STEPPER BUTTONS (+ and -) */
+    
+    /* Target the container holding the buttons to remove conflicting borders */
+    div[data-baseweb="base-input"] > div:last-child {
+        background-color: transparent !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.5); /* Soft glass separator */
+    }
+
+    /* Target the buttons themselves */
+    div[data-baseweb="base-input"] [role="button"] {
+        background-color: transparent !important; /* Removes the solid blocky background */
+        color: #702459 !important; /* Matches your text theme */
+        transition: all 0.2s ease;
+    }
+
+    /* Hover Effect: Soft white glow */
+    div[data-baseweb="base-input"] [role="button"]:hover {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        color: #D53F8C !important; /* Brighter pink on hover */
+    }
+
+    /* Active/Click Effect: Soft pink press */
+    div[data-baseweb="base-input"] [role="button"]:active {
+        background-color: rgba(213, 63, 140, 0.3) !important;
+    }
+
+    /* 7. EXCHANGE RATE PILL */
     .glass-pill {
         background-color: rgba(255, 255, 255, 0.4);
         border-radius: 50px;
