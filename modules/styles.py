@@ -135,54 +135,67 @@ GLOBAL_CSS = """
         visibility: hidden !important;
     }
 
-    /* 5. GLASSY INPUTS */
+
+    /* 5. UNIFIED GLASS CAPSULE INPUT */
 
     div[data-baseweb="base-input"] {
-        background-color: transparent !important;
-        border: none !important;
+        background-color: rgba(255, 255, 255, 0.5) !important; /* Glass Background */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.8) !important; /* White border */
+        border-radius: 50px !important; /* Fully rounded capsule */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 0px 5px; /* Slight padding for inner breathing room */
+        gap: 0px !important; /* Remove gap between text and buttons */
     }
 
-    div[data-baseweb="input"] {
-        background-color: rgba(255, 255, 255, 0.5) !important;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.8) !important;
-        border-radius: 12px !important;
-        /* Optional: ensures content doesn't bleed out of rounded corners */
-        overflow: hidden;
+        padding: 0 5px; /* Slight padding for inner breathing room */
+        gap: 0 !important; /* Remove gap between text and buttons */
+    div[data-baseweb="base-input"] input {
+        background-color: transparent !important;
+        color: #2D3748 !important; /* Dark Slate text */
+        font-weight: 700 !important;
+        padding-left: 15px !important; /* Center text better */
     }
 
-    div[data-baseweb="input"] input {
-        color: #2D3748 !important;
-        font-weight: 600 !important;
-        /* Ensure the text input element itself is transparent so the glass shows */
+    /* This removes the "Pink Block" background from the stepper container on the right */
+    div[data-baseweb="base-input"] > div:last-child {
         background-color: transparent !important;
+        border: none !important; /* Remove the vertical divider line */
+        margin-right: 5px; 
     }
 
     /* 6. BEAUTIFY STEPPER BUTTONS (+ and -) */
     
-    /* Target the container holding the buttons to remove conflicting borders */
-    div[data-baseweb="base-input"] > div:last-child {
-        background-color: transparent !important;
-        border-left: 1px solid rgba(255, 255, 255, 0.5); /* Soft glass separator */
-    }
-
-    /* Target the buttons themselves */
+    /* Step C: Turn the square buttons into Floating Circles */
     div[data-baseweb="base-input"] [role="button"] {
-        background-color: transparent !important; /* Removes the solid blocky background */
-        color: #702459 !important; /* Matches your text theme */
-        transition: all 0.2s ease;
+        background-color: rgba(255, 255, 255, 0.4) !important; /* Subtle white circle */
+        border-radius: 50% !important; /* Make them circles */
+        color: #702459 !important; /* Deep Pink Icon Color */
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important; /* Enforce circle shape */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 1px solid rgba(255,255,255,0.6) !important;
+        margin-left: 5px !important; /* Space between the buttons */
+        transition: all 0.2s ease !important;
     }
 
-    /* Hover Effect: Soft white glow */
+    /* Hover Effect: Bright Pink Glow */
     div[data-baseweb="base-input"] [role="button"]:hover {
-        background-color: rgba(255, 255, 255, 0.5) !important;
-        color: #D53F8C !important; /* Brighter pink on hover */
+        background-color: #D53F8C !important; /* Pink background on hover */
+        color: white !important; /* White icon on hover */
+        transform: scale(1.1); /* Slight grow effect */
+        box-shadow: 0 4px 10px rgba(213, 63, 140, 0.3);
+        border-color: #D53F8C !important;
     }
 
-    /* Active/Click Effect: Soft pink press */
-    div[data-baseweb="base-input"] [role="button"]:active {
-        background-color: rgba(213, 63, 140, 0.3) !important;
+    /* Remove the default focus border (The Blue Ring) */
+    div[data-baseweb="base-input"]:focus-within {
+        border-color: #D53F8C !important;
+        box-shadow: 0 0 0 3px rgba(213, 63, 140, 0.2) !important;
     }
 
     /* 7. EXCHANGE RATE PILL */
