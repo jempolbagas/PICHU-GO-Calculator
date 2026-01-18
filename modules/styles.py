@@ -88,39 +88,51 @@ GLOBAL_CSS = """
         color: #742a2a;
     }
 
-    /* 4. THE FLOATING ISLAND */
-    div[data-baseweb="tab-list"] {
+    /* 4. THE FLOATING ISLAND (ROBUST FIX) */
+    
+    /* Target the container */
+    [data-baseweb="tab-list"] {
         display: flex !important;
-        flex-direction: row !important;
-        gap: 10px !important;
-        background-color: rgba(255, 255, 255, 0.25) !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
-        border-radius: 50px !important;
+        justify-content: center !important;
+        background-color: rgba(255, 255, 255, 0.4) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
         padding: 6px !important;
-    }
-
-    div[data-baseweb="tab"] {
         border-radius: 50px !important;
-        padding: 10px 20px !important;
-        font-weight: 600 !important;
+        gap: 8px !important;
+        width: fit-content !important;
+        margin: 0 auto 20px auto !important; /* Center the whole pill on screen */
+    }
+
+    /* Target the Individual Tab Button (Handles both div and button tags) */
+    [data-baseweb="tab"] {
+        background-color: transparent !important;
         border: none !important;
-        margin: 0 !important;
+        border-radius: 40px !important;
+        padding: 8px 30px !important; /* Force wider clickable area */
+        color: rgba(112, 36, 89, 0.7) !important;
+        font-weight: 600 !important;
+        transition: all 0.2s ease !important;
+        height: auto !important;
     }
 
-    div[data-baseweb="tab"][aria-selected="true"] {
-        background: #FFFFFF !important;
-        color: #D53F8C !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-        position: relative !important;
+    /* Target Text inside the tab to ensure it inherits color */
+    [data-baseweb="tab"] > div, [data-baseweb="tab"] > p {
+        color: inherit !important; 
     }
 
-    div[data-baseweb="tab"][aria-selected="false"] {
-        background: transparent !important;
-        color: rgba(112, 36, 89, 0.6) !important;
+    /* Active Tab State */
+    [data-baseweb="tab"][aria-selected="true"] {
+        background-color: #D53F8C !important;
+        color: white !important;
+        box-shadow: 0 4px 10px rgba(213, 63, 140, 0.3) !important;
     }
 
-    div[data-baseweb="tab-highlight"], div[data-baseweb="tab-border"] {
+    /* Remove the default red line Streamlit adds */
+    [data-baseweb="tab-highlight"], [data-baseweb="tab-border"] {
         display: none !important;
+        visibility: hidden !important;
     }
 
     /* 5. GLASSY INPUTS */
