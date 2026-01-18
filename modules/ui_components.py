@@ -50,12 +50,11 @@ def render_korea_tab(config):
     kr_total, kr_item_idr, kr_shared_fees = calculate_korea(
         kr_price_input, kr_ongkir_input, kr_people, rate_kr, jasa_tf_kr, admin_go
     )
-    kr_total_rounded = round(kr_total, -2)
 
     st.markdown(f"""
     <div class="glass-card-kr">
         <p class="label">🇰🇷 Estimated Total</p>
-        <h1>Rp {kr_total_rounded:,.0f}</h1>
+        <h1>Rp {kr_total:,.0f}</h1>
         <div class="breakdown-pill">
             <span>📦 Price: {kr_item_idr:,.0f}</span>
             <span>•</span>
@@ -112,13 +111,12 @@ def render_china_tab(config):
     cn_total, cn_item_idr, cn_shared_fees = calculate_china(
         cn_price_input, cn_ongkir_input, cn_people, rate_ch, jasa_tf_ch, admin_go
     )
-    cn_total_rounded = round(cn_total, -2)
 
     st.markdown(f"""
     <div class="result-card-cn">
         <h3 style="margin:0; color: #c53030;">🇨🇳 Total Estimation</h3>
         <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">
-            Rp {cn_total_rounded:,.0f}
+            Rp {cn_total:,.0f}
         </p>
         <p style="margin:0; font-size: 14px; opacity: 0.8;">
             Rate: {rate_ch} | Ongkir: {cn_ongkir_input} Yuan
