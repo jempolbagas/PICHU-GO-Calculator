@@ -69,11 +69,15 @@ st.markdown("""
 
     /* 3. KOREA CARD INNER TYPOGRAPHY (Cleaned from Python) */
     .glass-card-kr h1 {
-        color: #702459;
         font-size: 3rem;
         font-weight: 800;
         margin: 10px 0;
         text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+        /* Gradient Text */
+        background: -webkit-linear-gradient(45deg, #702459, #B83280);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .glass-card-kr p.label {
@@ -106,6 +110,65 @@ st.markdown("""
         box-shadow: 0 10px 25px -5px rgba(229, 62, 62, 0.15); /* Red glow */
         margin-top: 20px;
         color: #742a2a;
+    }
+
+    /* 4. SOFT PILL TABS */
+    div[data-baseweb="tab-list"] {
+        gap: 0;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+        padding: 5px;
+    }
+
+    div[data-baseweb="tab"] {
+        border-radius: 25px;
+        padding: 8px 20px;
+        border: none !important;
+        transition: all 0.3s ease;
+    }
+
+    div[data-baseweb="tab"][aria-selected="true"] {
+        background-color: #ffffff;
+        color: #D53F8C !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    div[data-baseweb="tab"][aria-selected="false"] {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Remove default underline/highlight */
+    div[data-baseweb="tab-highlight"], div[data-baseweb="tab-border"] {
+        display: none !important;
+    }
+
+    /* 5. GLASSY INPUTS */
+    div[data-baseweb="input"] {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        border-radius: 12px !important;
+    }
+
+    div[data-baseweb="input"] input {
+        color: #2D3748 !important;
+        font-weight: 600 !important;
+    }
+
+    /* 6. EXCHANGE RATE PILL */
+    .glass-pill {
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 600;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -169,14 +232,7 @@ with tab_kr:
     ongkir_kr_default = config.get('ongkir_kr_default', 2000)
 
     st.markdown(f"""
-    <div style="background-color: rgba(255, 255, 255, 0.5); 
-                padding: 10px 15px; 
-                border-radius: 10px; 
-                border: 1px solid #d53f8c; 
-                color: #d53f8c; 
-                font-weight: 600; 
-                text-align: center; 
-                margin-bottom: 15px;">
+    <div class="glass-pill" style="color: #702459;">
         💱 Exchange Rate: 1 KRW = {rate_kr} IDR
     </div>
     """, unsafe_allow_html=True)
@@ -243,14 +299,7 @@ with tab_ch:
     ongkir_ch_default = config.get('ongkir_ch_default', 100)
 
     st.markdown(f"""
-    <div style="background-color: rgba(255, 255, 255, 0.5); 
-                padding: 10px 15px; 
-                border-radius: 10px; 
-                border: 1px solid #c53030; 
-                color: #c53030; 
-                font-weight: 600; 
-                text-align: center; 
-                margin-bottom: 15px;">
+    <div class="glass-pill" style="color: #9B2C2C;">
         💱 Exchange Rate: 1 CNY = {rate_ch} IDR
     </div>
     """, unsafe_allow_html=True)
