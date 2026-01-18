@@ -112,34 +112,47 @@ st.markdown("""
         color: #742a2a;
     }
 
-    /* 4. SOFT PILL TABS */
+    /* 4. THE FLOATING ISLAND (Fixed & Strengthened) */
+    
+    /* The "Dock" Container */
     div[data-baseweb="tab-list"] {
-        gap: 0;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 30px;
-        padding: 5px;
+        display: flex !important;              /* Force Flexbox layout */
+        flex-direction: row !important;        /* Ensure horizontal row */
+        gap: 10px !important;                  /* Force space between tabs */
+        background-color: rgba(255, 255, 255, 0.25) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border-radius: 50px !important;
+        padding: 6px !important;
     }
 
+    /* Common Tab Styling */
     div[data-baseweb="tab"] {
-        border-radius: 25px;
-        padding: 8px 20px;
+        border-radius: 50px !important;        /* Fully rounded */
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
         border: none !important;
-        transition: all 0.3s ease;
+        margin: 0 !important;                  /* Remove default Streamlit margins */
     }
 
+    /* THE ACTIVE "BUBBLE" */
     div[data-baseweb="tab"][aria-selected="true"] {
-        background-color: #ffffff;
-        color: #D53F8C !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        background: #FFFFFF !important;        /* "background" shorthand overwrites images/gradients */
+        color: #D53F8C !important;             /* Brand Pink */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+        position: relative !important;         /* Ensure it sits on top */
     }
 
+    /* THE INACTIVE "GHOST" */
     div[data-baseweb="tab"][aria-selected="false"] {
-        background-color: transparent;
-        color: rgba(0, 0, 0, 0.5) !important;
+        background: transparent !important;
+        color: rgba(112, 36, 89, 0.6) !important;
     }
 
-    /* Remove default underline/highlight */
-    div[data-baseweb="tab-highlight"], div[data-baseweb="tab-border"] {
+    /* Remove the default Streamlit red underline completely */
+    div[data-baseweb="tab-highlight"] {
+        display: none !important;
+    }
+    div[data-baseweb="tab-border"] {
         display: none !important;
     }
 
