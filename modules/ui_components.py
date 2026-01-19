@@ -112,14 +112,15 @@ def render_china_tab(config):
         cn_price_input, cn_ongkir_input, cn_people, rate_ch, jasa_tf_ch, admin_go
     )
 
+    # Updated Result Card (Matching Korea Design)
     st.markdown(f"""
-    <div class="result-card-cn">
-        <h3 style="margin:0; color: #c53030;">🇨🇳 Total Estimation</h3>
-        <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">
-            Rp {cn_total:,.0f}
-        </p>
-        <p style="margin:0; font-size: 14px; opacity: 0.8;">
-            Rate: {rate_ch} | Ongkir: {cn_ongkir_input} Yuan
-        </p>
+    <div class="glass-card-cn">
+        <p class="label">🇨🇳 Estimated Total</p>
+        <h1>Rp {cn_total:,.0f}</h1>
+        <div class="breakdown-pill">
+            <span>📦 Price: {cn_item_idr:,.0f}</span>
+            <span>•</span>
+            <span>✈️ Fees: {cn_shared_fees + admin_go:,.0f}</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)

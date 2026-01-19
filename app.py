@@ -12,7 +12,7 @@ st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
 # --- CONFIGURATION ---
 config, status = get_config()
 
-# Replace st.title("PICHU GO CALCULATOR") with this:
+# --- HEADER ---
 st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
         <h1 style="
@@ -27,17 +27,6 @@ st.markdown("""
         ">
             PICHU GO CALCULATOR
         </h1>
-        <p style="
-            color: #702459;
-            font-size: 1rem;
-            font-weight: 600;
-            opacity: 0.7;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            text-transform: uppercase;
-        ">
-            Group Order Estimation Tool
-        </p>
     </div>
 """, unsafe_allow_html=True)
 

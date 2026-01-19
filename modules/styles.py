@@ -76,16 +76,49 @@ GLOBAL_CSS = """
         margin-top: 10px;
     }
 
-    /* EXISTING CHINA STYLES */
-    .result-card-cn {
-        background-color: #ffffff;
-        padding: 24px;
-        border-radius: 16px;
-        border: 2px solid #fff5f5;
-        border-left: 8px solid #e53e3e;
-        box-shadow: 0 10px 25px -5px rgba(229, 62, 62, 0.15);
+    /* 3.1. CHINA GLASS CARD CONTAINER */
+    .glass-card-cn {
+        background: rgba(255, 255, 255, 0.65);
+        box-shadow: 0 8px 32px 0 rgba(229, 62, 62, 0.20); /* Red Shadow */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 24px;
+        padding: 30px;
         margin-top: 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* 3.2. CHINA CARD TYPOGRAPHY */
+    .glass-card-cn h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 10px 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        background: -webkit-linear-gradient(45deg, #742a2a, #c53030); /* Red Gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card-cn p.label {
+        color: #9B2C2C; /* Dark Red */
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    .glass-card-cn .breakdown-pill {
+        display: inline-flex;
+        gap: 15px;
+        background: rgba(255,255,255,0.5);
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 0.9rem;
         color: #742a2a;
+        margin-top: 10px;
     }
 
     /* 4. THE FLOATING ISLAND (ROBUST FIX) */
